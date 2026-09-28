@@ -234,3 +234,32 @@
     <hr>
 
 </div>
+
+<br><br>
+
+<h2>Exercício 9</h2>
+
+<div *ngFor="let produto of produtosDiretiva">
+
+    <p [ngClass]="{
+      'sem-estoque': produto.quantidade === 0,
+      'estoque-baixo': produto.quantidade >= 1 && produto.quantidade <= 5,
+      'estoque-disponivel': produto.quantidade > 5
+    }">
+        {{ produto.nome }} -
+
+        <span *ngIf="produto.quantidade === 0">
+            Sem estoque
+        </span>
+
+        <span *ngIf="produto.quantidade >= 1 && produto.quantidade <= 5">
+            Estoque baixo
+        </span>
+
+        <span *ngIf="produto.quantidade > 5">
+            Estoque disponível
+        </span>
+
+    </p>
+
+</div>

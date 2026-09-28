@@ -1,0 +1,11 @@
+.sem-estoque {
+  color: red;
+}
+
+.estoque-baixo {
+  color: orange;
+}
+
+.estoque-disponivel {
+  color: green;
+}
