@@ -1,1 +1,83 @@
-<p>cad-livros works!</p>
+<p>Olá, meu nome é {{nome}}, tenho {{idade}} anos e curso {{curso}} </p>
+
+<p>Produto: {{produto}}</p>
+<p>Preço: {{preco | currency: 'BRL'}}</p>
+<p>Quantidade: {{quantidade}}</p>
+
+<p>Total: {{preco * quantidade | currency: 'BRL'}}</p>
+
+<img [src]="imagemProduto" [alt]="descricaoImagem">
+
+<button [disabled]="formularioValido">Enviar </button>
+<br>
+<button (click)="curtir()">Curtir</button>
+
+<p>Curtidas: {{curtidas}}</p>
+
+<p>Quantidade: {{quantidadeContador}}</p>
+<button (click)="diminuir()" [disabled]="quantidadeContador === 0">Diminuir quantidade</button>
+<br>
+<button (click)="aumentar()">Aumentar quantidade</button>
+<br>
+<input [(ngModel)]="nomeTempoReal">
+<p>Olá {{nomeTempoReal}}!</p>
+
+<br>
+
+<input type="text" [(ngModel)]="produtoCadastro"> <input type="number" [(ngModel)]="precoCadastro"> <input type="number"
+    [(ngModel)]="quantidadeCadastro">
+<p>Produto: {{produtoCadastro}}</p>
+<p>Preço: {{precoCadastro | currency: 'BRL'}}</p>
+<p>Quantidade: {{quantidadeCadastro}}</p>
+<p>Total: {{ precoCadastro * quantidadeCadastro | currency:'BRL' }}</p>
+
+<br>
+
+<input type="text" [(ngModel)]="nomeProdutoEstoque">
+<br>
+<p>Produto: {{nomeProdutoEstoque}}</p>
+<p>Estoque: {{estoque}}</p>
+
+<button (click)="aumentarEstoque()">Aumentar produto estoque</button>
+<br>
+<button (click)="diminuirEstoque()" [disabled]="estoque === 0">Diminuir produto estoque</button>
+
+<br>
+
+<p>Usuário: <input type="text" [(ngModel)]="usuario"></p>
+<p>Senha: <input type="password" [(ngModel)]="senha"></p>
+<br>
+
+
+<button (click)="entrar()" [disabled]="usuario === '' || senha === ''">Login</button>
+
+<p>{{mensagemLogin}}</p>
+
+<br><br>
+
+<p>Produto escolhido: {{produtoCarrinho}}</p>
+<br>
+<p>Preço carrinho: {{precoCarrinho | currency: 'BRL'}}</p>
+<br>
+<p>Quantidade: {{quantidadeCarrinho}}</p>
+<button (click)="aumentarQuantidadeCarrinho()">Aumentar</button> <br>
+<button (click)="diminuirQuantidadeCarrinho()" [disabled]="quantidadeCarrinho === 1">Diminuir</button>
+<br>
+
+<button (click)="adicionarCarrinho()">Adicionar ao carrinho</button>
+
+<p>{{mensagemCarrinho}}</p>
+<p>Total carrinho: {{precoCarrinho * quantidadeCarrinho | currency: 'BRL'}}</p>
+
+<br>
+
+<p>Nome do Aluno: <input type="text" [(ngModel)]="nomeAluno"></p>
+
+<p>Aluno: {{nomeAluno}}</p>
+<p>Quantidade de disciplinas: {{quantidadeDisciplinas}}</p>
+
+<button (click)="aumentarDisciplinas()">Aumentar disciplinas</button> <br>
+<button (click)="diminuirDisciplinas()" [disabled]="quantidadeDisciplinas === 1">Diminuir</button>
+<br>
+<button (click)="realizarMatricula()" [disabled]="nomeAluno === ''">Realizar matrícula</button>
+<p>{{mensagemMatricula}}</p>
