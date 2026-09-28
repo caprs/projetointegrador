@@ -214,4 +214,38 @@ alternarPromocao(produto: Produto) {
 
 // Exercício 11
 somenteDisponiveis = false;
+
+// Exercício 12
+novoNomeProduto = '';
+novaQuantidadeProduto: number | null = null;
+mensagemCadastro = '';
+
+cadastrarProduto() {
+  if (
+    this.novoNomeProduto.trim() === '' ||
+    this.novaQuantidadeProduto === null ||
+    this.novaQuantidadeProduto < 0
+  ) {
+    this.mensagemCadastro = 'Não foi possível realizar o cadastro.';
+    return;
+  }
+
+  this.produtosDiretiva.push({
+    id: Date.now(),
+    nome: this.novoNomeProduto,
+    preco: 0,
+    quantidade: this.novaQuantidadeProduto,
+    promocao: false
+  });
+
+  this.novoNomeProduto = '';
+  this.novaQuantidadeProduto = null;
+  this.mensagemCadastro = '';
+}
+
+excluirProduto(id: number) {
+  this.produtosDiretiva = this.produtosDiretiva.filter(
+    produto => produto.id !== id
+  );
+}
 }
