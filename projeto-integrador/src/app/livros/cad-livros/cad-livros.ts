@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+
+interface Produto{
+  id: number;
+  nome: string;
+  preco: number;
+  quantidade: number;
+}
 @Component({
   selector: 'app-cad-livros',
   standalone: false,
@@ -113,4 +120,90 @@ export class CadLivros {
   realizarMatricula(){
     this.mensagemMatricula = 'Matrícula realizada para ' + this.nomeAluno + ' em ' + this.quantidadeDisciplinas + ' disciplina(s)';
   }
+
+//=============================================================================================
+ // Exercício 1
+mensagemVisivel = true;
+
+alternarMensagem() {
+  this.mensagemVisivel = !this.mensagemVisivel;
+}
+
+// Exercício 2
+usuarioLogado = false;
+
+alternarLogin() {
+  this.usuarioLogado = !this.usuarioLogado;
+}
+
+// Exercício 3
+idadeDiretiva = 0;
+
+aumentarIdade() {
+  this.idadeDiretiva++;
+}
+
+diminuirIdade() {
+  if (this.idadeDiretiva > 0) {
+    this.idadeDiretiva--;
+  }
+}
+
+// Exercício 4
+nomeProdutoDiretiva = 'Teclado';
+quantidadeEstoqueDiretiva = 5;
+
+adicionarEstoqueDiretiva() {
+  this.quantidadeEstoqueDiretiva++;
+}
+
+removerEstoqueDiretiva() {
+  if (this.quantidadeEstoqueDiretiva > 0) {
+    this.quantidadeEstoqueDiretiva--;
+  }
+}
+
+// Exercício 5
+nomes = [
+  'Ana',
+  'Carlos',
+  'João',
+  'Maria',
+  'Pedro'
+];
+
+// Exercício 6
+nomesIniciais = ['Ana', 'Carlos', 'João', 'Maria', 'Pedro'];
+
+removerUltimoNome() {
+  this.nomes.pop();
+}
+
+limparNomes() {
+  this.nomes = [];
+}
+
+restaurarNomes() {
+  this.nomes = [...this.nomesIniciais];
+}
+
+// Exercício 7
+disciplinas = [
+  'Banco de Dados',
+  'Java',
+  'Angular',
+  'Redes',
+  'Sistemas Operacionais',
+  'Engenharia de Software'
+];
+
+// Exercício 8
+produtosDiretiva: Produto[] = [
+  { id: 1, nome: 'Teclado', preco: 150, quantidade: 5 },
+  { id: 2, nome: 'Mouse', preco: 80, quantidade: 10 },
+  { id: 3, nome: 'Monitor', preco: 900, quantidade: 2 },
+  { id: 4, nome: 'Headset', preco: 200, quantidade: 0 },
+  { id: 5, nome: 'Webcam', preco: 250, quantidade: 8 }
+];
+
 }

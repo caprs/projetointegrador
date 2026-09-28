@@ -81,3 +81,156 @@
 <br>
 <button (click)="realizarMatricula()" [disabled]="nomeAluno === ''">Realizar matrícula</button>
 <p>{{mensagemMatricula}}</p>
+
+<br>
+<hr>
+
+<h2>Exercício 1</h2>
+
+<button (click)="alternarMensagem()">
+    Mostrar ou ocultar mensagem
+</button>
+
+<p *ngIf="mensagemVisivel">
+    Bem-vindo ao sistema
+</p>
+
+<br>
+
+<h2>Exercício 2</h2>
+
+<p *ngIf="usuarioLogado; else naoAutorizado">
+    Usuário autenticado
+</p>
+
+<ng-template #naoAutorizado>
+    <p>Acesso não autorizado</p>
+</ng-template>
+
+<button (click)="alternarLogin()">
+    {{ usuarioLogado ? 'Sair' : 'Entrar' }}
+</button>
+
+<br>
+<br>
+<h2>Exercício 3</h2>
+
+<p>Idade: {{ idadeDiretiva }}</p>
+
+<p *ngIf="idadeDiretiva < 12">Criança</p>
+
+<p *ngIf="idadeDiretiva >= 12 && idadeDiretiva <= 17">
+    Adolescente
+</p>
+
+<p *ngIf="idadeDiretiva >= 18 && idadeDiretiva <= 59">
+    Adulto
+</p>
+
+<p *ngIf="idadeDiretiva >= 60">Idoso</p>
+
+<button (click)="diminuirIdade()" [disabled]="idadeDiretiva === 0">
+    -
+</button>
+
+<button (click)="aumentarIdade()">+</button>
+
+<br><br>
+
+<h2>Exercício 4</h2>
+
+<p>Produto: {{ nomeProdutoDiretiva }}</p>
+<p>Quantidade: {{ quantidadeEstoqueDiretiva }}</p>
+
+<p *ngIf="quantidadeEstoqueDiretiva > 0">
+    Produto disponível
+</p>
+
+<p *ngIf="quantidadeEstoqueDiretiva === 0">
+    Produto sem estoque
+</p>
+
+<button (click)="adicionarEstoqueDiretiva()">+</button>
+
+<button (click)="removerEstoqueDiretiva()" [disabled]="quantidadeEstoqueDiretiva === 0">
+    -
+</button>
+
+<br><br>
+
+<h2>Exercício 5</h2>
+
+<ul>
+    <li *ngFor="let nome of nomes;
+            let i = index;
+            let primeiro = first;
+            let ultimo = last">
+
+        {{ i + 1 }} - {{ nome }}
+
+        <span *ngIf="primeiro"> - Primeiro da lista</span>
+        <span *ngIf="ultimo"> - Último da lista</span>
+    </li>
+</ul>
+
+<br><br>
+<h2>Exercício 6</h2>
+
+<p>Total de nomes: {{ nomes.length }}</p>
+
+<ul>
+    <li *ngFor="let nome of nomes">
+        {{ nome }}
+    </li>
+</ul>
+
+<p *ngIf="nomes.length === 0">
+    Nenhum nome cadastrado
+</p>
+
+<button (click)="removerUltimoNome()" [disabled]="nomes.length === 0">
+    Remover último
+</button>
+
+<button (click)="limparNomes()">
+    Limpar lista
+</button>
+
+<button (click)="restaurarNomes()">
+    Restaurar lista
+</button>
+
+<br><br>
+
+<br><br>
+
+<h2>Exercício 7</h2>
+
+<div *ngFor="let disciplina of disciplinas; let par = even; let impar = odd; let primeiro = first; let ultimo = last"
+    [ngClass]="{
+    'linha-par': par,
+    'linha-impar': impar,
+    'primeiro-item': primeiro,
+    'ultimo-item': ultimo
+  }">
+    {{ disciplina }}
+</div>
+
+<br><br>
+
+<h2>Exercício 8</h2>
+
+<div *ngFor="let produto of produtosDiretiva; let i = index">
+
+    <p>Posição: {{ i + 1 }}</p>
+    <p>Produto: {{ produto.nome }}</p>
+    <p>Preço: {{ produto.preco | currency:'BRL' }}</p>
+    <p>Quantidade: {{ produto.quantidade }}</p>
+    <p>
+        Valor total em estoque:
+        {{ produto.preco * produto.quantidade | currency:'BRL' }}
+    </p>
+
+    <hr>
+
+</div>
