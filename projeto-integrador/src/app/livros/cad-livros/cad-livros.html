@@ -293,3 +293,27 @@
     <hr>
 
 </div>
+
+<br><br>
+
+<h2>Exercício 11</h2>
+
+<label>
+    <input type="checkbox" [(ngModel)]="somenteDisponiveis">
+    Mostrar somente produtos disponíveis
+</label>
+
+<br><br>
+
+<ng-container *ngFor="let produto of produtosDiretiva">
+
+    <div *ngIf="!somenteDisponiveis || produto.quantidade > 0">
+
+        <p>Produto: {{ produto.nome }}</p>
+        <p>Quantidade: {{ produto.quantidade }}</p>
+
+        <hr>
+
+    </div>
+
+</ng-container>

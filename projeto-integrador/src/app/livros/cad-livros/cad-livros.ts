@@ -211,4 +211,7 @@ alternarPromocao(produto: Produto) {
   produto.promocao = !produto.promocao;
 }
 
+
+// Exercício 11
+somenteDisponiveis = false;
 }
