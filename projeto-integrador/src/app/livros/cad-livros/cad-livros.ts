@@ -7,6 +7,14 @@ interface Produto{
   quantidade: number;
   promocao: boolean;
 }
+
+interface Tarefa {
+  id: number;
+  titulo: string;
+  responsavel: string;
+  prioridade: 'baixa' | 'media' | 'alta';
+  concluida: boolean;
+}
 @Component({
   selector: 'app-cad-livros',
   standalone: false,
@@ -247,5 +255,27 @@ excluirProduto(id: number) {
   this.produtosDiretiva = this.produtosDiretiva.filter(
     produto => produto.id !== id
   );
+}
+
+// Exercício 13
+tarefas: Tarefa[] = [
+  { id: 1, titulo: 'Criar tela de login', responsavel: 'Ana', prioridade: 'alta', concluida: true },
+  { id: 2, titulo: 'Criar banco de dados', responsavel: 'Carlos', prioridade: 'alta', concluida: false },
+  { id: 3, titulo: 'Criar página inicial', responsavel: 'João', prioridade: 'media', concluida: false },
+  { id: 4, titulo: 'Testar sistema', responsavel: 'Maria', prioridade: 'media', concluida: true },
+  { id: 5, titulo: 'Criar documentação', responsavel: 'Pedro', prioridade: 'baixa', concluida: false },
+  { id: 6, titulo: 'Revisar projeto', responsavel: 'Ana', prioridade: 'baixa', concluida: false }
+];
+
+alterarSituacao(tarefa: Tarefa) {
+  tarefa.concluida = !tarefa.concluida;
+}
+
+get tarefasConcluidas() {
+  return this.tarefas.filter(tarefa => tarefa.concluida).length;
+}
+
+get tarefasPendentes() {
+  return this.tarefas.filter(tarefa => !tarefa.concluida).length;
 }
 }

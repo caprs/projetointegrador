@@ -9,3 +9,20 @@
 .estoque-disponivel {
   color: green;
 }
+
+.baixa {
+  background-color: lightgreen;
+}
+
+.media {
+  background-color: lightyellow;
+}
+
+.alta {
+  background-color: lightcoral;
+}
+
+.tarefa-concluida {
+  text-decoration: line-through;
+  opacity: 0.6;
+}

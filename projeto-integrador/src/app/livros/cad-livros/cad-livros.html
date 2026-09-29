@@ -363,3 +363,37 @@
     <hr>
 
 </div>
+
+<br><br>
+
+<h2>Exercício 13</h2>
+
+<p>Total de tarefas: {{ tarefas.length }}</p>
+<p>Concluídas: {{ tarefasConcluidas }}</p>
+<p>Pendentes: {{ tarefasPendentes }}</p>
+
+<p *ngIf="tarefas.length === 0">
+    Nenhuma tarefa cadastrada
+</p>
+
+<div *ngFor="let tarefa of tarefas" [ngClass]="[
+    tarefa.prioridade,
+    tarefa.concluida ? 'tarefa-concluida' : ''
+  ]">
+
+    <p>Tarefa: {{ tarefa.titulo }}</p>
+    <p>Responsável: {{ tarefa.responsavel }}</p>
+    <p>Prioridade: {{ tarefa.prioridade }}</p>
+
+    <p>
+        Situação:
+        {{ tarefa.concluida ? 'Concluída' : 'Pendente' }}
+    </p>
+
+    <button (click)="alterarSituacao(tarefa)">
+        Alterar situação
+    </button>
+
+    <hr>
+
+</div>
