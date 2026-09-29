@@ -15,6 +15,15 @@ interface Tarefa {
   prioridade: 'baixa' | 'media' | 'alta';
   concluida: boolean;
 }
+
+interface Projeto {
+  id: number;
+  titulo: string;
+  equipe: string;
+  nota: number | null;
+  status: 'planejamento' | 'desenvolvimento' | 'testes' | 'concluido';
+  entregue: boolean;
+}
 @Component({
   selector: 'app-cad-livros',
   standalone: false,
@@ -277,5 +286,53 @@ get tarefasConcluidas() {
 
 get tarefasPendentes() {
   return this.tarefas.filter(tarefa => !tarefa.concluida).length;
+}
+
+// Desafio Final
+projetos: Projeto[] = [
+  {
+    id: 1,
+    titulo: 'Sistema de Biblioteca',
+    equipe: 'Equipe A',
+    nota: 8.5,
+    status: 'concluido',
+    entregue: true
+  },
+  {
+    id: 2,
+    titulo: 'Sistema de Vendas',
+    equipe: 'Equipe B',
+    nota: 5.5,
+    status: 'testes',
+    entregue: false
+  },
+  {
+    id: 3,
+    titulo: 'Sistema Acadêmico',
+    equipe: 'Equipe C',
+    nota: null,
+    status: 'desenvolvimento',
+    entregue: false
+  }
+];
+
+mostrarConcluidos = true;
+
+alterarStatus(projeto: Projeto) {
+  if (projeto.status === 'planejamento') {
+    projeto.status = 'desenvolvimento';
+  } else if (projeto.status === 'desenvolvimento') {
+    projeto.status = 'testes';
+  } else if (projeto.status === 'testes') {
+    projeto.status = 'concluido';
+  } else {
+    projeto.status = 'planejamento';
+  }
+}
+
+get totalConcluidos() {
+  return this.projetos.filter(
+    projeto => projeto.status === 'concluido'
+  ).length;
 }
 }

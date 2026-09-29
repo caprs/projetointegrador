@@ -442,3 +442,61 @@
 <p>Nenhum produto cadastrado</p>
 
 }
+
+<br><br>
+<hr>
+
+<h2>Desafio Final - Painel de Projetos</h2>
+
+<p>Total de projetos: {{ projetos.length }}</p>
+<p>Projetos concluídos: {{ totalConcluidos }}</p>
+
+<label>
+    <input type="checkbox" [(ngModel)]="mostrarConcluidos">
+    Mostrar projetos concluídos
+</label>
+
+<br><br>
+
+@for (projeto of projetos; track projeto.id; let i = $index) {
+
+@if (mostrarConcluidos || projeto.status !== 'concluido') {
+
+<div class="projeto" [ngClass]="[
+        projeto.status,
+        projeto.nota !== null && projeto.nota >= 7 ? 'nota-boa' : '',
+        projeto.nota !== null && projeto.nota < 6 ? 'nota-baixa' : ''
+      ]">
+
+    <p>Posição: {{ i + 1 }}</p>
+
+    <p>Projeto: {{ projeto.titulo }}</p>
+
+    <p>Equipe: {{ projeto.equipe }}</p>
+
+    <p>Status: {{ projeto.status }}</p>
+
+    @if (projeto.nota !== null) {
+    <p>Nota: {{ projeto.nota }}</p>
+    } @else {
+    <p>Projeto ainda não avaliado</p>
+    }
+
+    @if (projeto.entregue) {
+    <p><strong>Projeto entregue</strong></p>
+    }
+
+    <button (click)="alterarStatus(projeto)">
+        Alterar status
+    </button>
+
+</div>
+
+<br>
+}
+
+} @empty {
+
+<p>Nenhum projeto cadastrado</p>
+
+}

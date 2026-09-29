@@ -26,3 +26,33 @@
   text-decoration: line-through;
   opacity: 0.6;
 }
+
+.projeto {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid gray;
+}
+
+.planejamento {
+  background-color: lightgray;
+}
+
+.desenvolvimento {
+  background-color: lightblue;
+}
+
+.testes {
+  background-color: lightyellow;
+}
+
+.concluido {
+  background-color: lightgreen;
+}
+
+.nota-boa {
+  font-weight: bold;
+}
+
+.nota-baixa {
+  border: 3px solid red;
+}
