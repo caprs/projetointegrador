@@ -397,3 +397,48 @@
     <hr>
 
 </div>
+
+<br><br>
+
+<h2>Exercício 14</h2>
+
+<h3>Exercício 1 convertido</h3>
+
+<button (click)="alternarMensagem()">
+    Mostrar ou ocultar mensagem
+</button>
+
+@if (mensagemVisivel) {
+<p>Bem-vindo ao sistema</p>
+}
+
+
+<h3>Exercício 2 convertido</h3>
+
+@if (usuarioLogado) {
+<p>Usuário autenticado</p>
+} @else {
+<p>Acesso não autorizado</p>
+}
+
+<button (click)="alternarLogin()">
+    {{ usuarioLogado ? 'Sair' : 'Entrar' }}
+</button>
+
+
+<h3>Exercício 8 convertido</h3>
+
+@for (produto of produtosDiretiva; track produto.id; let i = $index) {
+
+<p>
+    {{ i + 1 }} -
+    {{ produto.nome }} |
+    Preço: {{ produto.preco | currency:'BRL' }} |
+    Quantidade: {{ produto.quantidade }}
+</p>
+
+} @empty {
+
+<p>Nenhum produto cadastrado</p>
+
+}
